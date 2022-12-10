@@ -3,11 +3,28 @@ const uploadBtn = document.querySelector("#uploadBtn");
 const btn = document.querySelector("#btn");
 const talkBtn = document.querySelector("#talk");
 const downloadBtn = document.querySelector("#downloadBtn");
+const textInput = document.querySelector("#textInput");
+const getBinaryFromFileBtn = document.querySelector("#getBinaryFromFile");
 var synthesis = window.speechSynthesis;
+let summarizedText;
 var voice = synthesis.getVoices().filter(function (voice) {
     return voice.lang === "en";
 })[0];
-
+function getBinaryNumbers(text) {
+    fetch(
+        "https://test.ahmed.center/hackathon/api/summarization/binary?text=" +
+            text
+    )
+        .then((res) => {
+            return res.text();
+        })
+        .then((binaryText) => {
+            play(binaryText);
+        })
+        .catch((error) => {
+            if (error) outputElement.textContent = error;
+        });
+}
 function showTalkBtn(text) {
     talkBtn.style.display = "block";
     talkBtn.addEventListener("click", () => {
@@ -47,19 +64,10 @@ function play(binaryText) {
         }, 500 * index);
     });
 }
+
 btn.addEventListener("click", (e) => {
-    fetch(
-        "https://test.ahmed.center/hackathon/api/summarization/binary?text=ahmed"
-    )
-        .then((res) => {
-            return res.text();
-        })
-        .then((binaryText) => {
-            play(binaryText);
-        })
-        .catch((error) => {
-            if (error) outputElement.textContent = error;
-        });
+    const inputText = textInput.value;
+    getBinaryNumbers(inputText);
 });
 
 uploadBtn.addEventListener("click", async () => {
@@ -80,8 +88,12 @@ uploadBtn.addEventListener("click", async () => {
             return data.text();
         })
         .then((text) => {
+            summarizedText = text;
             uploadResponse.textContent = "Backend response" + text;
             downloadBtn.href = "data:text/html," + text;
             showTalkBtn(text);
         });
+});
+getBinaryFromFileBtn.addEventListener("click", () => {
+    getBinaryNumbers(summarizedText);
 });

@@ -6,6 +6,12 @@
     width: 100%;
 }
 
+:root {
+    --mainColor: #b983ff;
+    --buttonsColor: #94b3fd;
+    --test: #94daff;
+}
+
 /* Start media queries for containers*/
 
 /* for mobile screens*/
@@ -45,13 +51,9 @@
     border-radius: 0% 100% 100% 0% / 100% 0% 100% 0%;
     width: 100%;
     height: 100%;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(
-        90deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(9, 9, 121, 1) 35%,
-        rgba(0, 212, 255, 1) 100%
-    );
+    background-color: #8bc6ec;
+    background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+
     display: flex;
     justify-content: space-around;
     align-items: center;

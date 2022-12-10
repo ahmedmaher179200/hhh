@@ -2,6 +2,7 @@ const outputElement = document.querySelector("#output");
 const uploadBtn = document.querySelector("#uploadBtn");
 const btn = document.querySelector("#btn");
 const talkBtn = document.querySelector("#talk");
+const downloadBtn = document.querySelector("#downloadBtn");
 var synthesis = window.speechSynthesis;
 var voice = synthesis.getVoices().filter(function (voice) {
     return voice.lang === "en";
@@ -48,17 +49,16 @@ function play(binaryText) {
 }
 btn.addEventListener("click", (e) => {
     fetch(
-        "https://test.ahmed.center/hackathon/api/summarization/binary?text=ahmed"
-    )
-        .then((res) => {
-            return res.text();
-        })
-        .then((binaryText) => {
-            play(binaryText);
-        })
-        .catch((error) => {
-            if (error) outputElement.textContent = error;
-        });
+        "https://test.ahmed.center/hackathon/api/summarization/binary?text="
+            .then((res) => {
+                return res.text();
+            })
+            .then((binaryText) => {
+                play(binaryText);
+            })
+            .catch((error) => {
+                if (error) outputElement.textContent = error;
+            });
 });
 
 uploadBtn.addEventListener("click", async () => {
@@ -80,6 +80,7 @@ uploadBtn.addEventListener("click", async () => {
         })
         .then((text) => {
             uploadResponse.textContent = "Backend response" + text;
+            downloadBtn.href = "data:text/html," + text;
             showTalkBtn(text);
         });
 });
