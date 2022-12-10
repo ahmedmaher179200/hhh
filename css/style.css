@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Start media queries for containers*/
+
+/* for mobile screens*/
+@media (max-width: 767px) {
+    .container {
+        width: 750px;
+    }
+
+    .home .choose i {
+        font-size: 100px;
+    }
+}
+/* for small screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: 540px;
+    }
+}
+/* for medium screens  */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        width: 720px;
+    }
+}
+/* for large screens */
+@media (min-width: 1200px) {
+    .container {
+        width: 1140px;
+    }
+}
+
+/* End media queries for containers*/
+
+/* Start background gradient */
+
+.home {
+    border-radius: 0% 100% 100% 0% / 100% 0% 100% 0%;
+    width: 100%;
+    height: 100%;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(9, 9, 121, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* End background gradient */
+
+.home .choose {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home .choose a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.home .choose i {
+    color: #fff;
+    font-size: 200px;
+    width: fit-content;
+    height: fit-content;
+    transform: 1s;
+}
+.blindEye,
+.ear-deaf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* buttons hover */
+
+.home .choose .blindEye:hover,
+.ear-deaf:hover {
+    box-shadow: 3px 3px 27px #000;
+    border-radius: 20%;
+    transition-delay: 0.1s;
+    transition-duration: 0.1s;
+}
+
+/* Start media queries for home content */
+
+/* for mobile screens*/
+@media (max-width: 767px) {
+    .home .choose i {
+        font-size: 100px;
+    }
+}
+/* for small screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .home .choose i {
+        font-size: 170px;
+    }
+}
+
+/* End media queries for home content */
